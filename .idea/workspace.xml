@@ -4,21 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="organizacion">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/AbstractNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Block.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Blockchain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/ConnectionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/IBlockchain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/MessageType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Miner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Node.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/ProofOfWork.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Transaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Wallet.java" afterDir="false" />
+    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="clases basicas">
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/AbstractNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/AbstractNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Blockchain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Blockchain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/ConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/ConnectionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Miner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Miner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/ProofOfWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/ProofOfWork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +85,8 @@
       <workItem from="1709637526603" duration="763000" />
       <workItem from="1709733421180" duration="881000" />
       <workItem from="1710269599844" duration="28000" />
-      <workItem from="1710269641609" duration="820000" />
+      <workItem from="1710269641609" duration="1460000" />
+      <workItem from="1710318340512" duration="3032000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -128,7 +128,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709733542627</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="clases basicas">
+      <option name="closed" value="true" />
+      <created>1710270487109</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1710270487109</updated>
+    </task>
+    <task id="LOCAL-00007" summary="clases basicas">
+      <option name="closed" value="true" />
+      <created>1710270496003</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1710270496003</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +153,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="organizacion" />
-    <option name="LAST_COMMIT_MESSAGE" value="organizacion" />
+    <MESSAGE value="clases basicas" />
+    <option name="LAST_COMMIT_MESSAGE" value="clases basicas" />
   </component>
 </project>
