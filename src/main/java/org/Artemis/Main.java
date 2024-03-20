@@ -1,30 +1,61 @@
 package org.Artemis;
 
+import org.Artemis.core.database.AlmacenDeDatos;
+import org.Artemis.core.user.User;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String username;
-        String password;
+        AlmacenDeDatos almacenDeDatos = new AlmacenDeDatos();
 
-        System.out.println("Welcome to Artemis Blockchain Interface!");
-        System.out.print("Enter username: ");
-        username = scanner.nextLine();
-        System.out.print("Enter password: ");
-        password = scanner.nextLine();
+        System.out.println("Bienvenido al sistema de registro de usuarios de Artemis");
 
-        // Aquí iría la lógica de autenticación
-        if (authenticateUser(username, password)) {
-            printArtemisBanner();
-        } else {
-            System.out.println("Authentication failed.");
+        // Continuar pidiendo datos hasta que se introduzcan correctamente.
+        while (true) {
+            try {
+                System.out.print("Ingrese nombre de usuario: \n");
+                String username = scanner.nextLine().trim();
+
+                System.out.print("Ingrese contraseña: ");
+                String password = scanner.nextLine().trim();
+
+                System.out.print("Ingrese correo electrónico: ");
+                String email = scanner.nextLine().trim();
+
+                System.out.print("Ingrese nombre: ");
+                String firstName = scanner.nextLine().trim();
+
+                System.out.print("Ingrese apellido: ");
+                String lastName = scanner.nextLine().trim();
+
+                System.out.print("Ingrese rol: ");
+                String role = scanner.nextLine().trim();
+
+                // Crear un nuevo usuario
+                User user = new User(username, AlmacenDeDatos.encode(password), email, firstName, lastName, role);
+
+                // Registrar usuario en la base de datos
+                boolean isRegistered = almacenDeDatos.registro(user);
+                if (isRegistered) {
+                    System.out.println("Usuario registrado con éxito.");
+                } else {
+                    System.out.println("No se pudo registrar al usuario. Por favor, intente de nuevo.");
+                }
+
+                // Si desea agregar una opción para terminar el bucle.
+                System.out.print("¿Desea registrar otro usuario? (Sí/No): ");
+                String respuesta = scanner.nextLine().trim();
+                if (!respuesta.equalsIgnoreCase("Sí")) {
+                    break; // Salir del bucle si la respuesta no es "Sí"
+                }
+            } catch (Exception e) {
+                System.out.println("Error al registrar el usuario: " + e.getMessage());
+            }
         }
-    }
-    private static boolean authenticateUser(String username, String password) {
-        // Aquí implementarías la verificación de las credenciales del usuario.
-        // Este es solo un ejemplo, debes implementar tu propia lógica de autenticación.
-        return "user".equals(username) && "0000".equals(password);
+
+        scanner.close();
     }
 
     private static void printArtemisBanner() {
