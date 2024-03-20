@@ -9,7 +9,16 @@ public class User {
     private String firstName;
     private String lastName;
     private String role;
-
+    //Constructor vacio
+    public User() {
+        this.id = ++count; // Incrementa el contador y asigna el ID
+        this.username = "";
+        this.password = "";
+        this.email = "";
+        this.firstName = "";
+        this.lastName = "";
+        this.role = "";
+    }
     // Constructor
     public User(String username, String password, String email, String firstName, String lastName, String role) {
         this.id = ++count; // Incrementa el contador y asigna el ID
@@ -51,6 +60,10 @@ public class User {
     }
 
     // Setters
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }

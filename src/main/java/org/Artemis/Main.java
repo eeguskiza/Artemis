@@ -2,76 +2,56 @@ package org.Artemis;
 
 import org.Artemis.core.database.AlmacenDeDatos;
 import org.Artemis.core.user.User;
+import org.jline.reader.LineReader;
+import org.jline.reader.LineReaderBuilder;
+import org.jline.terminal.Terminal;
+import org.jline.terminal.TerminalBuilder;
 
+import java.io.IOException;
 import java.util.Scanner;
+
+import static org.Artemis.core.database.AlmacenDeDatos.*;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        AlmacenDeDatos almacenDeDatos = new AlmacenDeDatos();
+        try {
+            Terminal terminal = TerminalBuilder.terminal();
+            LineReader lineReader = LineReaderBuilder.builder().terminal(terminal).build();
+            String dbURL = "jdbc:oracle:thin:@artemis_tpurgent?TNS_ADMIN=src/main/resources/Wallet_Artemis";
+            AlmacenDeDatos almacenDeDatos = new AlmacenDeDatos(dbURL);
+            printArtemisBanner();
+            System.out.println("Bienvenido a Artemis, la plataforma de gestión de identidad descentralizada.\n\n");
 
-        System.out.println("Bienvenido al sistema de registro de usuarios de Artemis");
-
-        // Continuar pidiendo datos hasta que se introduzcan correctamente.
-        while (true) {
-            try {
-                System.out.print("Ingrese nombre de usuario: \n");
-                String username = scanner.nextLine().trim();
-
-                System.out.print("Ingrese contraseña: ");
-                String password = scanner.nextLine().trim();
-
-                System.out.print("Ingrese correo electrónico: ");
-                String email = scanner.nextLine().trim();
-
-                System.out.print("Ingrese nombre: ");
-                String firstName = scanner.nextLine().trim();
-
-                System.out.print("Ingrese apellido: ");
-                String lastName = scanner.nextLine().trim();
-
-                System.out.print("Ingrese rol: ");
-                String role = scanner.nextLine().trim();
-
-                // Crear un nuevo usuario
-                User user = new User(username, AlmacenDeDatos.encode(password), email, firstName, lastName, role);
-
-                // Registrar usuario en la base de datos
-                boolean isRegistered = almacenDeDatos.registro(user);
-                if (isRegistered) {
-                    System.out.println("Usuario registrado con éxito.");
-                } else {
-                    System.out.println("No se pudo registrar al usuario. Por favor, intente de nuevo.");
-                }
-
-                // Si desea agregar una opción para terminar el bucle.
-                System.out.print("¿Desea registrar otro usuario? (Sí/No): ");
-                String respuesta = scanner.nextLine().trim();
-                if (!respuesta.equalsIgnoreCase("Sí")) {
-                    break; // Salir del bucle si la respuesta no es "Sí"
-                }
-            } catch (Exception e) {
-                System.out.println("Error al registrar el usuario: " + e.getMessage());
+            // Animación de carga con un "spinner"
+            String[] spinner = new String[] { "-", "\\", "|", "/" };
+            for (int i = 0; i < 100; i++) {
+                String frame = spinner[i % spinner.length];
+                System.out.print("\rCargando " + frame);
+                Thread.sleep(40);  // Ajusta este valor si necesitas que la animación sea más rápida o más lenta
             }
-        }
+            System.out.println("\rCargando completado ✓\n");
 
-        scanner.close();
+            almacenDeDatos.mostrarMenu(lineReader, terminal); // Pasar lineReader y terminal al método
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static void printArtemisBanner() {
-        String artemisBanner =
+        String artemisBanner = "\033[0;94m" + // Este código cambia el color del texto a azul
                 "      ___           ___           ___           ___           ___                       ___     \n" +
-                        "     /\\  \\         /\\  \\         /\\  \\         /\\  \\         /\\__\\          ___        /\\  \\    \n" +
-                        "    /::\\  \\       /::\\  \\        \\:\\  \\       /::\\  \\       /::|  |        /\\  \\      /::\\  \\   \n" +
-                        "   /:/\\:\\  \\     /:/\\:\\  \\        \\:\\  \\     /:/\\:\\  \\     /:|:|  |        \\:\\  \\    /:/\\ \\  \\  \n" +
-                        "  /::\\~\\:\\  \\   /::\\~\\:\\  \\       /::\\  \\   /::\\~\\:\\  \\   /:/|:|__|__      /::\\__\\  _\\:\\~\\ \\  \\ \n" +
-                        " /:/\\:\\ \\:\\__\\ /:/\\:\\ \\:\\__\\     /:/\\:\\__\\ /:/\\:\\ \\:\\__\\ /:/ |::::\\__\\  __/:/\\/__/ /\\ \\:\\ \\ \\__\\\n" +
-                        " \\/__\\:\\/:/  / \\/_|::\\/:/  /    /:/  \\/__/ \\:\\~\\:\\ \\/__/ \\/__/~~/:/  / /\\/:/  /    \\:\\ \\:\\ \\/__/\n" +
-                        "      \\::/  /     |:|::/  /    /:/  /       \\:\\ \\:\\__\\         /:/  /  \\::/__/      \\:\\ \\:\\__\\  \n" +
-                        "      /:/  /      |:|\\/__/     \\/__/         \\:\\ \\/__/        /:/  /    \\:\\__\\       \\:\\/:/  /  \n" +
-                        "     /:/  /       |:|  |                      \\:\\__\\         /:/  /      \\/__/        \\::/  /   \n" +
-                        "     \\/__/         \\|__|                       \\/__/         \\/__/                     \\/__/    ";
+                "     /\\  \\         /\\  \\         /\\  \\         /\\  \\         /\\__\\          ___        /\\  \\    \n" +
+                "    /::\\  \\       /::\\  \\        \\:\\  \\       /::\\  \\       /::|  |        /\\  \\      /::\\  \\   \n" +
+                "   /:/\\:\\  \\     /:/\\:\\  \\        \\:\\  \\     /:/\\:\\  \\     /:|:|  |        \\:\\  \\    /:/\\ \\  \\  \n" +
+                "  /::\\~\\:\\  \\   /::\\~\\:\\  \\       /::\\  \\   /::\\~\\:\\  \\   /:/|:|__|__      /::\\__\\  _\\:\\~\\ \\  \\ \n" +
+                " /:/\\:\\ \\:\\__\\ /:/\\:\\ \\:\\__\\     /:/\\:\\__\\ /:/\\:\\ \\:\\__\\ /:/ |::::\\__\\  __/:/\\/__/ /\\ \\:\\ \\ \\__\\\n" +
+                " \\/__\\:\\/:/  / \\/_|::\\/:/  /    /:/  \\/__/ \\:\\~\\:\\ \\/__/ \\/__/~~/:/  / /\\/:/  /    \\:\\ \\:\\ \\/__/\n" +
+                "      \\::/  /     |:|::/  /    /:/  /       \\:\\ \\:\\__\\         /:/  /  \\::/__/      \\:\\ \\:\\__\\  \n" +
+                "      /:/  /      |:|\\/__/     \\/__/         \\:\\ \\/__/        /:/  /    \\:\\__\\       \\:\\/:/  /  \n" +
+                "     /:/  /       |:|  |                      \\:\\__\\         /:/  /      \\/__/        \\::/  /   \n" +
+                "     \\/__/         \\|__|                       \\/__/         \\/__/                     \\/__/    \033[0m"; // Este código resetea el color
         System.out.println(artemisBanner);
+
     }
 }
 

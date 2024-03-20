@@ -4,30 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="clases basicas">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/AlmacenDeDatos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/sql.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/user/User.java" afterDir="false" />
+    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="database implemented">
+      <change afterPath="$PROJECT_DIR$/limpiar.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AlmacenDeDatosTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/UserCodeTester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/AbstractNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Block.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Blockchain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/ConnectionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/IBlockchain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Message.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/MessageType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Miner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/ProofOfWork.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Transaction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/Wallet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/AlmacenDeDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/AlmacenDeDatos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/user/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +48,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "JUnit.AlmacenDeDatosTest.executor": "Run",
+    "JUnit.UserCodeTester.executor": "Run",
     "Maven.Artemis [clean,install].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -86,6 +75,34 @@
       <command value="mvn clean install" />
     </option>
   </component>
+  <component name="RunManager" selected="JUnit.AlmacenDeDatosTest.testSomeDatabaseOperation">
+    <configuration name="AlmacenDeDatosTest.testInicioSesionExitoso" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Artemis" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AlmacenDeDatosTest" />
+      <option name="METHOD_NAME" value="testInicioSesionExitoso" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AlmacenDeDatosTest.testSomeDatabaseOperation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Artemis" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AlmacenDeDatosTest" />
+      <option name="METHOD_NAME" value="testSomeDatabaseOperation" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AlmacenDeDatosTest.testSomeDatabaseOperation" />
+        <item itemvalue="JUnit.AlmacenDeDatosTest.testInicioSesionExitoso" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -108,7 +125,8 @@
       <workItem from="1710269599844" duration="28000" />
       <workItem from="1710269641609" duration="1460000" />
       <workItem from="1710318340512" duration="5482000" />
-      <workItem from="1710919341402" duration="4581000" />
+      <workItem from="1710919341402" duration="5354000" />
+      <workItem from="1710943008339" duration="7267000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -174,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710425863350</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="database implemented">
+      <option name="closed" value="true" />
+      <created>1710924096550</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710924096550</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,6 +210,7 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="organizacion" />
     <MESSAGE value="clases basicas" />
-    <option name="LAST_COMMIT_MESSAGE" value="clases basicas" />
+    <MESSAGE value="database implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="database implemented" />
   </component>
 </project>
