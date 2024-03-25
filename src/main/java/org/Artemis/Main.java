@@ -27,11 +27,11 @@ public class Main {
             for (int i = 0; i < 100; i++) {
                 String frame = spinner[i % spinner.length];
                 System.out.print("\rCargando " + frame);
-                Thread.sleep(40);  // Ajusta este valor si necesitas que la animación sea más rápida o más lenta
+                Thread.sleep(40);
             }
             System.out.println("\rCargando completado ✓\n");
 
-            almacenDeDatos.mostrarMenu(lineReader, terminal); // Pasar lineReader y terminal al método
+            almacenDeDatos.mostrarMenu(lineReader, terminal);
         } catch (Exception e) {
             e.printStackTrace();
         }

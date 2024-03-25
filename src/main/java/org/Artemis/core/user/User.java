@@ -1,5 +1,8 @@
 package org.Artemis.core.user;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class User {
     private static int count = 0;
     private int id;
@@ -86,6 +89,14 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Map<String, Double> getActivos() {
+        Map<String, Double> activos = new HashMap<>();
+        activos.put("Bitcoin", 12.5);
+        activos.put("Ethereum", 8.0);
+        activos.put("Cardano", 4.0);
+        return activos;
     }
 
     // Método toString (opcional, pero útil para depuración)

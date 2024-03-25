@@ -1,5 +1,6 @@
 package org.Artemis.core.database;
 
+import org.Artemis.core.api.MenuInicio;
 import org.Artemis.core.user.User;
 
 import java.io.IOException;
@@ -13,6 +14,8 @@ import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
+import org.jline.utils.AttributedStringBuilder;
+import org.jline.utils.AttributedStyle;
 
 public class AlmacenDeDatos {
     // Logger for error handling
@@ -23,7 +26,6 @@ public class AlmacenDeDatos {
     private ArrayList<User> usuarios;
 
     public AlmacenDeDatos(String dbURL) {
-        // No need to set the logger again, it's already initialized.
         logger.info("Reconstruyendo base de datos ...");
         usuarios = new ArrayList<>();
 
@@ -34,6 +36,8 @@ public class AlmacenDeDatos {
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "No se ha podido conectar a la Base de Datos.", e);
         }
+
+
     }
     //limpiar pantalla
     public void limpiarPantalla() {
@@ -54,7 +58,9 @@ public class AlmacenDeDatos {
     }
     //-------------MENU------------------
     public void mostrarMenu(LineReader lineReader, Terminal terminal) {
-        while (true) {
+        boolean sesionIniciada = false;
+
+        while (!sesionIniciada) {
             System.out.println("Bienvenido al sistema Artemis");
             System.out.println("1. Registrarse");
             System.out.println("2. Iniciar sesión");
@@ -76,13 +82,16 @@ public class AlmacenDeDatos {
                     System.out.print("Ingrese contraseña: ");
                     String password = lineReader.readLine();
 
-                    boolean inicioSesionExitoso = iniciarSesion(username, password);
-                    if (inicioSesionExitoso) {
+                    User usuario = iniciarSesion(username, password, lineReader, terminal);
+                    if (usuario != null) {
                         System.out.println("Inicio de sesión exitoso.");
+                        sesionIniciada = true;
+                        // No es necesario llamar a MenuInicio aquí, ya que se llama dentro de iniciarSesion
                     } else {
                         System.out.println("Inicio de sesión fallido. Intente de nuevo.");
+                        lineReader.readLine("Presione Enter para continuar...");
+                        limpiarPantalla();
                     }
-                    lineReader.readLine("Presione Enter para continuar...");
                     break;
                 case "3":
                     System.out.println("Gracias por usar el sistema Artemis. Hasta luego.");
@@ -168,7 +177,7 @@ public class AlmacenDeDatos {
         }
     }
 
-    public boolean iniciarSesion(String username, String password) {
+    public User iniciarSesion(String username, String password, LineReader lineReader, Terminal terminal) {
         String sql = "SELECT * FROM users WHERE USERNAME = ? AND PASSWORD = ?";
 
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -189,17 +198,23 @@ public class AlmacenDeDatos {
 
                 logger.info("Inicio de sesión exitoso para el usuario: " + username);
                 limpiarPantalla();
-                return true;
+
+                // Instanciar y mostrar el menú de inicio
+                MenuInicio menuInicio = new MenuInicio();
+                menuInicio.mostrarMenu(user); // Asegúrate de que el método mostrarMenu ahora acepte estos parámetros
+
+                return user; // Retornar el objeto User en caso de éxito
             } else {
                 logger.warning("Inicio de sesión fallido para el usuario: " + username);
-                return false;
+                return null;
             }
 
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Error al intentar iniciar sesión: ", e);
-            return false;
+            return null;
         }
     }
+
 
 
 

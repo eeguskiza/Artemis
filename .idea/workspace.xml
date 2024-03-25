@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="database implemented">
-      <change afterPath="$PROJECT_DIR$/limpiar.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AlmacenDeDatosTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/UserCodeTester.java" afterDir="false" />
+    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="tests and upgrades">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/api/MenuInicio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/AlmacenDeDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/AlmacenDeDatos.java" afterDir="false" />
@@ -40,34 +39,40 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2cdqHIbbhZyOLcA8nOftWCVoUdE" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "JUnit.AlmacenDeDatosTest.executor": "Run",
-    "JUnit.UserCodeTester.executor": "Run",
-    "Maven.Artemis [clean,install].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "Errors",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AlmacenDeDatosTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AlmacenDeDatosTest.testInicioSesionExitoso.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AlmacenDeDatosTest.testSomeDatabaseOperation.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserCodeTester.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Artemis [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/test" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -75,7 +80,7 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AlmacenDeDatosTest.testSomeDatabaseOperation">
+  <component name="RunManager" selected="JUnit.AlmacenDeDatosTest.testInicioSesionExitoso">
     <configuration name="AlmacenDeDatosTest.testInicioSesionExitoso" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Artemis" />
       <option name="PACKAGE_NAME" value="" />
@@ -126,7 +131,10 @@
       <workItem from="1710269641609" duration="1460000" />
       <workItem from="1710318340512" duration="5482000" />
       <workItem from="1710919341402" duration="5354000" />
-      <workItem from="1710943008339" duration="7267000" />
+      <workItem from="1710943008339" duration="12370000" />
+      <workItem from="1711034083102" duration="1264000" />
+      <workItem from="1711100909421" duration="3568000" />
+      <workItem from="1711350694946" duration="129000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -200,17 +208,27 @@
       <option name="project" value="LOCAL" />
       <updated>1710924096550</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="tests and upgrades">
+      <option name="closed" value="true" />
+      <created>1710952663153</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1710952663153</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first commit" />
     <MESSAGE value="organizacion" />
     <MESSAGE value="clases basicas" />
     <MESSAGE value="database implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="database implemented" />
+    <MESSAGE value="tests and upgrades" />
+    <option name="LAST_COMMIT_MESSAGE" value="tests and upgrades" />
   </component>
 </project>
