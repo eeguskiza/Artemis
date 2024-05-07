@@ -4,16 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="tests and upgrades">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/api/MenuInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" afterDir="false" />
+    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="reamde">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/client/SimpleClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Block.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Wallet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/server/SimpleServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/blobs/version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/AlmacenDeDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/AlmacenDeDatos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/user/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +36,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;eeguskiza&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/eeguskiza/Artemis.git&quot;,
+    &quot;accountId&quot;: &quot;c9fac6ae-454a-4c38-986b-8f6b1b822cad&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -46,29 +62,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlmacenDeDatosTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlmacenDeDatosTest.testInicioSesionExitoso.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlmacenDeDatosTest.testSomeDatabaseOperation.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserCodeTester.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Artemis [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Application.SimpleClient.executor": "Run",
+    "Application.SimpleServer.executor": "Run",
+    "JUnit.AlmacenDeDatosTest.executor": "Run",
+    "JUnit.AlmacenDeDatosTest.testInicioSesionExitoso.executor": "Run",
+    "JUnit.AlmacenDeDatosTest.testSomeDatabaseOperation.executor": "Run",
+    "JUnit.UserCodeTester.executor": "Run",
+    "Maven.Artemis [clean,install].executor": "Run",
+    "Maven.Artemis [clean].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "Errors",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -77,10 +96,11 @@
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
+      <command value="mvn clean" />
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AlmacenDeDatosTest.testInicioSesionExitoso">
+  <component name="RunManager">
     <configuration name="AlmacenDeDatosTest.testInicioSesionExitoso" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Artemis" />
       <option name="PACKAGE_NAME" value="" />
@@ -111,7 +131,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-9b16c6e2" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -134,7 +155,13 @@
       <workItem from="1710943008339" duration="12370000" />
       <workItem from="1711034083102" duration="1264000" />
       <workItem from="1711100909421" duration="3568000" />
-      <workItem from="1711350694946" duration="129000" />
+      <workItem from="1711350694946" duration="229000" />
+      <workItem from="1712055482604" duration="305000" />
+      <workItem from="1712055816891" duration="1202000" />
+      <workItem from="1712757123169" duration="60000" />
+      <workItem from="1712757227382" duration="429000" />
+      <workItem from="1714064711388" duration="4147000" />
+      <workItem from="1715093049939" duration="5250000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -216,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710952663153</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="reamde">
+      <option name="closed" value="true" />
+      <created>1711350841622</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1711350841622</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,6 +264,7 @@
     <MESSAGE value="clases basicas" />
     <MESSAGE value="database implemented" />
     <MESSAGE value="tests and upgrades" />
-    <option name="LAST_COMMIT_MESSAGE" value="tests and upgrades" />
+    <MESSAGE value="reamde" />
+    <option name="LAST_COMMIT_MESSAGE" value="reamde" />
   </component>
 </project>

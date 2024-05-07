@@ -27,9 +27,9 @@ public class Main {
             for (int i = 0; i < 100; i++) {
                 String frame = spinner[i % spinner.length];
                 System.out.print("\rCargando " + frame);
-                Thread.sleep(40);
+                Thread.sleep(42); // Tiempo de espera entre frames
             }
-            System.out.println("\rCargando completado ✓\n");
+            System.out.println("\rCargado completado ✓\n");
 
             almacenDeDatos.mostrarMenu(lineReader, terminal);
         } catch (Exception e) {

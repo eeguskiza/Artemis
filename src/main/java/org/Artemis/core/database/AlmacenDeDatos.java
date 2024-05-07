@@ -41,9 +41,11 @@ public class AlmacenDeDatos {
     }
     //limpiar pantalla
     public void limpiarPantalla() {
+        
         for (int i = 0; i < 100; i++) {
             System.out.println();
         }
+
 
     }
     // Método para codificar la contraseña
