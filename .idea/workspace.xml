@@ -4,20 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="reamde">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/client/SimpleClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Block.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Transaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Wallet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/server/SimpleServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/blobs/version" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" beforeDir="false" />
+    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="avances">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/api/MenuInicio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/client/SimpleClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Block.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Transaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Wallet.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/AlmacenDeDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/AlmacenDeDatos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/server/SimpleServer.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,32 +58,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Main.executor": "Run",
-    "Application.SimpleClient.executor": "Run",
-    "Application.SimpleServer.executor": "Run",
-    "JUnit.AlmacenDeDatosTest.executor": "Run",
-    "JUnit.AlmacenDeDatosTest.testInicioSesionExitoso.executor": "Run",
-    "JUnit.AlmacenDeDatosTest.testSomeDatabaseOperation.executor": "Run",
-    "JUnit.UserCodeTester.executor": "Run",
-    "Maven.Artemis [clean,install].executor": "Run",
-    "Maven.Artemis [clean].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "Errors",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SimpleClient.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SimpleServer.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AlmacenDeDatosTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AlmacenDeDatosTest.testInicioSesionExitoso.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AlmacenDeDatosTest.testSomeDatabaseOperation.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserCodeTester.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Artemis [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Artemis [clean].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -100,7 +96,7 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.AlmacenDeDatosTest.testInicioSesionExitoso">
     <configuration name="AlmacenDeDatosTest.testInicioSesionExitoso" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Artemis" />
       <option name="PACKAGE_NAME" value="" />
@@ -123,8 +119,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AlmacenDeDatosTest.testSomeDatabaseOperation" />
         <item itemvalue="JUnit.AlmacenDeDatosTest.testInicioSesionExitoso" />
+        <item itemvalue="JUnit.AlmacenDeDatosTest.testSomeDatabaseOperation" />
       </list>
     </recent_temporary>
   </component>
@@ -161,7 +157,10 @@
       <workItem from="1712757123169" duration="60000" />
       <workItem from="1712757227382" duration="429000" />
       <workItem from="1714064711388" duration="4147000" />
-      <workItem from="1715093049939" duration="5250000" />
+      <workItem from="1715093049939" duration="5385000" />
+      <workItem from="1715157204030" duration="2926000" />
+      <workItem from="1715696115640" duration="2469000" />
+      <workItem from="1716301049305" duration="237000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -251,7 +250,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711350841622</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="avances">
+      <option name="closed" value="true" />
+      <created>1715102901481</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715102901481</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +272,7 @@
     <MESSAGE value="database implemented" />
     <MESSAGE value="tests and upgrades" />
     <MESSAGE value="reamde" />
-    <option name="LAST_COMMIT_MESSAGE" value="reamde" />
+    <MESSAGE value="avances" />
+    <option name="LAST_COMMIT_MESSAGE" value="avances" />
   </component>
 </project>

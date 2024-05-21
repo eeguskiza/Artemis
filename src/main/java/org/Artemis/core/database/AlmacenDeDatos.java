@@ -1,21 +1,14 @@
 package org.Artemis.core.database;
 
-import org.Artemis.core.api.MenuInicio;
 import org.Artemis.core.user.User;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.jline.reader.LineReader;
-import org.jline.reader.LineReaderBuilder;
 import org.jline.terminal.Terminal;
-import org.jline.terminal.TerminalBuilder;
-import org.jline.utils.AttributedStringBuilder;
-import org.jline.utils.AttributedStyle;
 
 public class AlmacenDeDatos {
     // Logger for error handling
