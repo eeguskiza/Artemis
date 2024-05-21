@@ -194,10 +194,6 @@ public class AlmacenDeDatos {
                 logger.info("Inicio de sesión exitoso para el usuario: " + username);
                 limpiarPantalla();
 
-                // Instanciar y mostrar el menú de inicio
-                MenuInicio menuInicio = new MenuInicio();
-                menuInicio.mostrarMenu(user); // Asegúrate de que el método mostrarMenu ahora acepte estos parámetros
-
                 return user; // Retornar el objeto User en caso de éxito
             } else {
                 logger.warning("Inicio de sesión fallido para el usuario: " + username);

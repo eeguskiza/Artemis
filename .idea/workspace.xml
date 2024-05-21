@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="avances">
+    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="First commit">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/api/MenuInicio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/client/SimpleClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Block.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Transaction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Wallet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/AlmacenDeDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/AlmacenDeDatos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/server/SimpleServer.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +91,7 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AlmacenDeDatosTest.testInicioSesionExitoso">
+  <component name="RunManager">
     <configuration name="AlmacenDeDatosTest.testInicioSesionExitoso" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Artemis" />
       <option name="PACKAGE_NAME" value="" />
@@ -127,8 +122,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
       </set>
     </attachedChunks>
   </component>
@@ -161,6 +156,7 @@
       <workItem from="1715157204030" duration="2926000" />
       <workItem from="1715696115640" duration="2469000" />
       <workItem from="1716301049305" duration="237000" />
+      <workItem from="1716301339654" duration="494000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -258,7 +254,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715102901481</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="First commit">
+      <option name="closed" value="true" />
+      <created>1716301392320</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716301392320</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,6 +277,7 @@
     <MESSAGE value="tests and upgrades" />
     <MESSAGE value="reamde" />
     <MESSAGE value="avances" />
-    <option name="LAST_COMMIT_MESSAGE" value="avances" />
+    <MESSAGE value="First commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
   </component>
 </project>
