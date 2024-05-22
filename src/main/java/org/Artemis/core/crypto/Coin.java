@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Coin implements Serializable {
     private String nombre;
     private Name name;
-    //PoW o PoS
+    //PoW o PoS --> No hay tiempo
     private int year;
     private String symbol;
     private double price;

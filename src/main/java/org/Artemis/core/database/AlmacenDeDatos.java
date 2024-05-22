@@ -4,7 +4,7 @@ import org.Artemis.core.crypto.Block;
 import org.Artemis.core.crypto.KeyPairGeneratorUtil;
 import org.Artemis.core.crypto.Name;
 import org.Artemis.core.crypto.Transaction;
-import org.Artemis.core.user.User;
+import org.Artemis.core.user.CryptoUser;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -21,14 +21,14 @@ public class AlmacenDeDatos {
     // Connection to the database
     private static Connection conn;
     // User logged in
-    private User usuario;
+    private CryptoUser usuario;
 
     //IMPORTANTE --> BLOCKCHAIN
     private ArrayList<Block> artemis;
 
     public AlmacenDeDatos(String dbURL) {
         logger.info("Reconstruyendo base de datos ...");
-        usuario = new User();
+        usuario = new CryptoUser();
         artemis = new ArrayList<>();
         cargarBlockchain();
         //crearBloqueGenesis();
@@ -60,12 +60,12 @@ public class AlmacenDeDatos {
     }
 
     //get usuario
-    public User getUsuario() {
+    public CryptoUser getUsuario() {
         return usuario;
     }
 
     //set usuario
-    public void setUsuario(User usuario) {
+    public void setUsuario(CryptoUser usuario) {
         this.usuario = usuario;
     }
 
@@ -107,10 +107,10 @@ public class AlmacenDeDatos {
                 String privateKey = keyPairGenerator.getPrivateKey();
 
                 // Crear un nuevo usuario
-                User user = new User(username, AlmacenDeDatos.encode(password), email, firstName, lastName, role, publicKey, privateKey);
+                CryptoUser cryptoUser = new CryptoUser(username, AlmacenDeDatos.encode(password), email, firstName, lastName, role, publicKey, privateKey);
 
                 // Registrar usuario en la base de datos
-                boolean isRegistered = almacenDeDatos.registro(user);
+                boolean isRegistered = almacenDeDatos.registro(cryptoUser);
                 if (isRegistered) {
                     System.out.println("Usuario registrado con éxito.");
                     return true;
@@ -126,20 +126,20 @@ public class AlmacenDeDatos {
     }
 
     // Método para registrar usuario en la base de datos
-    public boolean registro(User user) {
+    public boolean registro(CryptoUser cryptoUser) {
         String sql = "INSERT INTO users (id, username, password, email, first_name, last_name, role, public_key, private_key) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, user.getId());             // id
-            pstmt.setString(2, user.getUsername());    // username
-            pstmt.setString(3, user.getPassword());    // password
-            pstmt.setString(4, user.getEmail());       // email
-            pstmt.setString(5, user.getFirstName());   // first_name
-            pstmt.setString(6, user.getLastName());    // last_name
-            pstmt.setString(7, user.getRole());        // role
-            pstmt.setString(8, user.getPublicKey());   // public_key
-            pstmt.setString(9, user.getPrivateKey());  // private_key
+            pstmt.setInt(1, cryptoUser.getId());             // id
+            pstmt.setString(2, cryptoUser.getUsername());    // username
+            pstmt.setString(3, cryptoUser.getPassword());    // password
+            pstmt.setString(4, cryptoUser.getEmail());       // email
+            pstmt.setString(5, cryptoUser.getFirstName());   // first_name
+            pstmt.setString(6, cryptoUser.getLastName());    // last_name
+            pstmt.setString(7, cryptoUser.getRole());        // role
+            pstmt.setString(8, cryptoUser.getPublicKey());   // public_key
+            pstmt.setString(9, cryptoUser.getPrivateKey());  // private_key
 
             int affectedRows = pstmt.executeUpdate();
 
@@ -160,7 +160,7 @@ public class AlmacenDeDatos {
 
 
     // Método para iniciar sesión
-    public User iniciarSesion(String username, String password) {
+    public CryptoUser iniciarSesion(String username, String password) {
         String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
 
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -171,19 +171,19 @@ public class AlmacenDeDatos {
 
             if (rs.next()) {
                 // Crear el objeto User a partir de los datos recuperados
-                User user = new User();
-                user.setId(rs.getInt("id"));
-                user.setUsername(rs.getString("username"));
-                user.setPassword(rs.getString("password"));
-                user.setEmail(rs.getString("email"));
-                user.setFirstName(rs.getString("first_name"));
-                user.setLastName(rs.getString("last_name"));
-                user.setRole(rs.getString("role"));
-                user.setPublicKey(rs.getString("public_key"));
-                user.setPrivateKey(rs.getString("private_key"));
+                CryptoUser cryptoUser = new CryptoUser();
+                cryptoUser.setId(rs.getInt("id"));
+                cryptoUser.setUsername(rs.getString("username"));
+                cryptoUser.setPassword(rs.getString("password"));
+                cryptoUser.setEmail(rs.getString("email"));
+                cryptoUser.setFirstName(rs.getString("first_name"));
+                cryptoUser.setLastName(rs.getString("last_name"));
+                cryptoUser.setRole(rs.getString("role"));
+                cryptoUser.setPublicKey(rs.getString("public_key"));
+                cryptoUser.setPrivateKey(rs.getString("private_key"));
 
                 logger.info("Inicio de sesión exitoso para el usuario: " + username);
-                return user; // Retornar el objeto User en caso de éxito
+                return cryptoUser; // Retornar el objeto User en caso de éxito
             } else {
                 logger.warning("Inicio de sesión fallido para el usuario: " + username);
                 return null;
@@ -212,24 +212,24 @@ public class AlmacenDeDatos {
         }
     }
 
-    public User obtenerUsuarioPorUsername(String username) {
+    public CryptoUser obtenerUsuarioPorUsername(String username) {
         String sql = "SELECT * FROM users WHERE username = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, username);
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                User user = new User();
-                user.setId(rs.getInt("id"));
-                user.setUsername(rs.getString("username"));
-                user.setPassword(rs.getString("password"));
-                user.setEmail(rs.getString("email"));
-                user.setFirstName(rs.getString("first_name"));
-                user.setLastName(rs.getString("last_name"));
-                user.setRole(rs.getString("role"));
-                user.setPublicKey(rs.getString("public_key"));
-                user.setPrivateKey(rs.getString("private_key"));
-                return user;
+                CryptoUser cryptoUser = new CryptoUser();
+                cryptoUser.setId(rs.getInt("id"));
+                cryptoUser.setUsername(rs.getString("username"));
+                cryptoUser.setPassword(rs.getString("password"));
+                cryptoUser.setEmail(rs.getString("email"));
+                cryptoUser.setFirstName(rs.getString("first_name"));
+                cryptoUser.setLastName(rs.getString("last_name"));
+                cryptoUser.setRole(rs.getString("role"));
+                cryptoUser.setPublicKey(rs.getString("public_key"));
+                cryptoUser.setPrivateKey(rs.getString("private_key"));
+                return cryptoUser;
             } else {
                 return null;
             }
@@ -244,7 +244,7 @@ public class AlmacenDeDatos {
         String usernameReceptor = scanner.nextLine().trim();
 
         // Verificar si el usuario receptor existe
-        User usuarioReceptor = obtenerUsuarioPorUsername(usernameReceptor);
+        CryptoUser usuarioReceptor = obtenerUsuarioPorUsername(usernameReceptor);
         if (usuarioReceptor == null) {
             System.out.println("El usuario receptor no existe.");
             return null;
@@ -384,9 +384,21 @@ public class AlmacenDeDatos {
 
     //metodo cerrar sesion
     public void cerrarSesion() {
+        System.out.println(
+                "_____/\\\\\\\\\\\\\\______________________________________________________________________________________        \n" +
+                        " ___/\\\\\\\\\\\\\\\\\\\\\\____________________________________________________________________________________       \n" +
+                        "  __/\\\\\\/////////\\\\\\___________________/\\\\\\__________________________________________/\\\\\\______________      \n" +
+                        "   _\\/\\\\\\_______\\/\\\\\\__/\\\\/\\\\\\\\\\\\\\___/\\\\\\\\\\\\\\\\\\\\\\_____/\\\\\\\\\\\\\\\\_____/\\\\\\\\\\__/\\\\\\\\\\___\\///___/\\\\\\\\\\\\\\\\\\\\_     \n" +
+                        "    _\\/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\_\\/\\\\\\/////\\\\\\_\\////\\\\\\////____/\\\\\\/////\\\\\\__/\\\\\\///\\\\\\\\\\///\\\\\\__/\\\\\\_\\/\\\\\\//////__    \n" +
+                        "     _\\/\\\\\\/////////\\\\\\_\\/\\\\\\___\\///_____\\/\\\\\\_______/\\\\\\\\\\\\\\\\\\\\\\__\\/\\\\\\_\\//\\\\\\__\\/\\\\\\_\\/\\\\\\_\\/\\\\\\\\\\\\\\\\\\\\_   \n" +
+                        "      _\\/\\\\\\_______\\/\\\\\\_\\/\\\\\\____________\\/\\\\\\_/\\\\__\\//\\\\///////___\\/\\\\\\__\\/\\\\\\__\\/\\\\\\_\\/\\\\\\_\\////////\\\\\\_  \n" +
+                        "       _\\/\\\\\\_______\\/\\\\\\_\\/\\\\\\____________\\//\\\\\\\\\\____\\//\\\\\\\\\\\\\\\\\\_\\/\\\\\\__\\/\\\\\\__\\/\\\\\\_\\/\\\\\\__/\\\\\\\\\\\\\\\\\\\\_ \n" +
+                        "        _\\///________\\///__\\///______________\\/////______\\//////////__\\///___\\///___\\///__\\///__\\//////////__\n");
         usuario = null;
         logger.info("Sesión cerrada.");
     }
+
+
 
     // Método para crear el bloque génesis
     public void crearBloqueGenesis() {

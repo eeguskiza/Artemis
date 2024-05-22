@@ -5,18 +5,19 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import org.Artemis.core.crypto.Block;
 import org.Artemis.core.crypto.Name;
 import org.Artemis.core.crypto.Transaction;
 import org.Artemis.core.database.AlmacenDeDatos;
 import org.Artemis.core.database.QRCodeGenerator;
+import org.Artemis.core.user.CryptoUser;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class MenuPrincipal implements QRCodeGenerator {
 
@@ -84,7 +85,16 @@ public class MenuPrincipal implements QRCodeGenerator {
                 "\u001B[33m", // Amarillo
                 "\u001B[34m", // Azul
                 "\u001B[35m", // Magenta
-                "\u001B[36m"  // Cian
+                "\u001B[36m",  // Cian
+                "\u001B[37m",  // Blanco
+                "\u001B[90m",  // Gris
+                "\u001B[91m",  // Rojo claro
+                "\u001B[92m",  // Verde claro
+                "\u001B[93m",  // Amarillo claro
+                "\u001B[94m",  // Azul claro
+                "\u001B[95m",  // Magenta claro
+                "\u001B[96m",  // Cian claro
+                "\u001B[97m"   // Blanco claro
         };
         String resetColor = "\u001B[0m";
         int colorIndex = 0;
@@ -139,9 +149,38 @@ public class MenuPrincipal implements QRCodeGenerator {
     private void opcion3() {
         almacenDeDatos.limpiarPantalla();
         System.out.println("Historial de transacciones:");
+
+        CryptoUser currentCryptoUser = almacenDeDatos.getUsuario();
+        String publicKey = currentCryptoUser.getPublicKey();
+        Map<Name, List<Transaction>> historialTransacciones = obtenerHistorialTransacciones(publicKey);
+
+        if (historialTransacciones.isEmpty()) {
+            System.out.println("No hay transacciones para mostrar.");
+        } else {
+            for (Map.Entry<Name, List<Transaction>> entry : historialTransacciones.entrySet()) {
+                System.out.println("Moneda: " + entry.getKey());
+                for (Transaction tx : entry.getValue()) {
+                    System.out.println(tx);
+                }
+            }
+        }
+
         System.out.println("\nPresione Enter para continuar...");
         new Scanner(System.in).nextLine();
     }
+
+    private Map<Name, List<Transaction>> obtenerHistorialTransacciones(String publicKey) {
+        Map<Name, List<Transaction>> historial = new HashMap<>();
+        for (Block block : almacenDeDatos.getArtemis()) {
+            for (Transaction tx : block.getTransactions()) {
+                if (tx != null && (tx.getSender().equals(publicKey) || tx.getReceiver().equals(publicKey))) {
+                    historial.computeIfAbsent(tx.getCoin(), k -> new ArrayList<>()).add(tx);
+                }
+            }
+        }
+        return historial;
+    }
+
 
     private void opcion4() {
         almacenDeDatos.limpiarPantalla();

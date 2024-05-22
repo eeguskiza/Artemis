@@ -2,14 +2,8 @@ package org.Artemis;
 
 import org.Artemis.core.api.MenuInicio;
 import org.Artemis.core.database.AlmacenDeDatos;
-import org.Artemis.core.user.User;
 
-import java.awt.*;
 import java.util.Scanner;
-import java.util.logging.Logger;
-
-import static org.Artemis.core.database.AlmacenDeDatos.*;
-import org.Artemis.core.api.*;
 
 public class Main {
     public static void main(String[] args) {

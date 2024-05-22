@@ -1,7 +1,7 @@
 package org.Artemis.core.api;
 
 import org.Artemis.core.database.AlmacenDeDatos;
-import org.Artemis.core.user.User;
+import org.Artemis.core.user.CryptoUser;
 
 import java.util.Scanner;
 
@@ -37,8 +37,28 @@ public class MenuInicio {
                     registrarUsuario(scanner);
                     break;
                 case "3":
+                    almacenDeDatos.limpiarPantalla();
+                    System.out.println( "\033[0;94m" +
+                            "                                                                                  \n" +
+                                    "                                                                                  \n" +
+                                    "   ,---,                    ___                       ____                        \n" +
+                                    "  '  .' \\                 ,--.'|_                   ,'  , `.  ,--,                \n" +
+                                    " /  ;    '.      __  ,-.  |  | :,'               ,-+-,.' _ |,--.'|                \n" +
+                                    ":  :       \\   ,' ,'/ /|  :  : ' :            ,-+-. ;   , |||  |,      .--.--.    \n" +
+                                    ":  |   /\\   \\  '  | |' |.;__,'  /     ,---.  ,--.'|'   |  ||`--'_     /  /    '   \n" +
+                                    "|  :  ' ;.   : |  |   ,'|  |   |     /     \\|   |  ,', |  |,,' ,'|   |  :  /`./   \n" +
+                                    "|  |  ;/  \\   \\'  :  /  :__,'| :    /    /  |   | /  | |--' '  | |   |  :  ;_     \n" +
+                                    "'  :  | \\  \\ ,'|  | '     '  : |__ .    ' / |   : |  | ,    |  | :    \\  \\    `.  \n" +
+                                    "|  |  '  '--'  ;  : |     |  | '.'|'   ;   /|   : |  |/     '  : |__   `----.   \\ \n" +
+                                    "|  :  :        |  , ;     |  | '.'|'   ;   /|   : |  |/     '  : |__   `----.   \\ \n" +
+                                    "|  | ,'         ---'      |  ,   / |   :    |   ;/          ;  :    ;'--'.     /  \n" +
+                                    "`--''                      ---`-'   \\   \\  /'---'           |  ,   /   `--'---'   \n" +
+                                    "                                     `----'                  ---`-'               \n" +
+                                    "                                                                                  \n"
+                    );
                     System.out.println("Gracias por usar Artemis. ¡Hasta luego!");
                     return;
+
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
                     break;
@@ -56,10 +76,10 @@ public class MenuInicio {
         System.out.print("Ingrese contraseña: ");
         String password = scanner.nextLine().trim();
 
-        User user = almacenDeDatos.iniciarSesion(username, password);
-        if (user != null) {
-            System.out.println("Inicio de sesión exitoso. Bienvenido " + user.getFirstName());
-            almacenDeDatos.setUsuario(user);
+        CryptoUser cryptoUser = almacenDeDatos.iniciarSesion(username, password);
+        if (cryptoUser != null) {
+            System.out.println("Inicio de sesión exitoso. Bienvenido " + cryptoUser.getFirstName());
+            almacenDeDatos.setUsuario(cryptoUser);
             return true; // Login successful
         } else {
             System.out.println("Nombre de usuario o contraseña incorrectos.");

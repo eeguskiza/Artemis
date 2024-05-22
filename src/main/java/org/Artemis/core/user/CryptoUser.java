@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class User {
+public class CryptoUser {
     private int count = 1;
     private int id;
     private String username;
@@ -20,11 +20,11 @@ public class User {
     private String publicKey;
     private String privateKey;
 
-    public User() {
+    public CryptoUser() {
         count++;
     }
 
-    public User(String username, String password, String email, String firstName, String lastName, String role, String publicKey, String privateKey) {
+    public CryptoUser(String username, String password, String email, String firstName, String lastName, String role, String publicKey, String privateKey) {
         this.id = count + (int) (Math.random() * 1000);
         this.username = username;
         this.password = password;

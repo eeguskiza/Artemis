@@ -4,12 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="Envios funcionales">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/QRCodeGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/qrcode.png" afterDir="false" />
+    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="Qr code generator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/api/MenuInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/api/MenuInicio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/api/MenuPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/api/MenuPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Coin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Coin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/AlmacenDeDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/AlmacenDeDatos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/user/CryptoUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Wallet_Artemis/README" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Wallet_Artemis/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/blockchain.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/blockchain.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/AlmacenDeDatosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AlmacenDeDatosTest2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UserCodeTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CryptoUserCodeTester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +27,8 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -96,20 +102,20 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="AlmacenDeDatosTest.testInicioSesionExitoso" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AlmacenDeDatosTest2.testInicioSesionExitoso" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Artemis" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AlmacenDeDatosTest" />
+      <option name="MAIN_CLASS_NAME" value="AlmacenDeDatosTest2" />
       <option name="METHOD_NAME" value="testInicioSesionExitoso" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AlmacenDeDatosTest.testSomeDatabaseOperation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AlmacenDeDatosTest2.testSomeDatabaseOperation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Artemis" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AlmacenDeDatosTest" />
+      <option name="MAIN_CLASS_NAME" value="AlmacenDeDatosTest2" />
       <option name="METHOD_NAME" value="testSomeDatabaseOperation" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -118,8 +124,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AlmacenDeDatosTest.testInicioSesionExitoso" />
-        <item itemvalue="JUnit.AlmacenDeDatosTest.testSomeDatabaseOperation" />
+        <item itemvalue="JUnit.AlmacenDeDatosTest2.testInicioSesionExitoso" />
+        <item itemvalue="JUnit.AlmacenDeDatosTest2.testSomeDatabaseOperation" />
       </list>
     </recent_temporary>
   </component>
@@ -162,7 +168,7 @@
       <workItem from="1716301049305" duration="237000" />
       <workItem from="1716301339654" duration="3833000" />
       <workItem from="1716366251150" duration="1425000" />
-      <workItem from="1716372919245" duration="16659000" />
+      <workItem from="1716372919245" duration="21301000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -300,7 +306,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716401043427</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Qr code generator">
+      <option name="closed" value="true" />
+      <created>1716401653371</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1716401653371</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,6 +334,7 @@
     <MESSAGE value="Implementacion Blockchain basica" />
     <MESSAGE value="Menu Principal implementado" />
     <MESSAGE value="Envios funcionales" />
-    <option name="LAST_COMMIT_MESSAGE" value="Envios funcionales" />
+    <MESSAGE value="Qr code generator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Qr code generator" />
   </component>
 </project>
