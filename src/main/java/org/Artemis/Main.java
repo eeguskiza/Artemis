@@ -1,22 +1,19 @@
 package org.Artemis;
 
+import org.Artemis.core.api.MenuInicio;
 import org.Artemis.core.database.AlmacenDeDatos;
 import org.Artemis.core.user.User;
-import org.jline.reader.LineReader;
-import org.jline.reader.LineReaderBuilder;
-import org.jline.terminal.Terminal;
-import org.jline.terminal.TerminalBuilder;
 
-import java.io.IOException;
+import java.awt.*;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import static org.Artemis.core.database.AlmacenDeDatos.*;
+import org.Artemis.core.api.*;
 
 public class Main {
     public static void main(String[] args) {
-        try {
-            Terminal terminal = TerminalBuilder.terminal();
-            LineReader lineReader = LineReaderBuilder.builder().terminal(terminal).build();
+        try (Scanner scanner = new Scanner(System.in)) {
             String dbURL = "jdbc:oracle:thin:@artemis_tpurgent?TNS_ADMIN=src/main/resources/Wallet_Artemis";
             AlmacenDeDatos almacenDeDatos = new AlmacenDeDatos(dbURL);
             printArtemisBanner();
@@ -30,8 +27,7 @@ public class Main {
                 Thread.sleep(42); // Tiempo de espera entre frames
             }
             System.out.println("\rCargado completado ✓\n");
-
-            almacenDeDatos.mostrarMenu(lineReader, terminal);
+            MenuInicio menuInicio = new MenuInicio(almacenDeDatos);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -51,7 +47,5 @@ public class Main {
                 "     /:/  /       |:|  |                      \\:\\__\\         /:/  /      \\/__/        \\::/  /   \n" +
                 "     \\/__/         \\|__|                       \\/__/         \\/__/                     \\/__/    \033[0m"; // Este código resetea el color
         System.out.println(artemisBanner);
-
     }
 }
-

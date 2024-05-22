@@ -49,7 +49,7 @@ Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENS
 
 ## Contacto
 
-Para preguntas o comentarios, puedes contactarme en [tu-email@dominio.com](mailto:tu-email@dominio.com).
+Para preguntas o comentarios, puedes contactarme en [tu-email@dominio.com](mailto:e.eguskiza@opendeusto.es).
 
 ---
 
