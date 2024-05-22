@@ -193,6 +193,12 @@ public class AlmacenDeDatos {
         }
     }
 
+    //metodo cerrar sesion
+    public void cerrarSesion() {
+        usuario = null;
+        logger.info("Sesión cerrada.");
+    }
+
     // Método para crear el bloque génesis
     public void crearBloqueGenesis() {
         Block genesisBlock = new Block(new Date());

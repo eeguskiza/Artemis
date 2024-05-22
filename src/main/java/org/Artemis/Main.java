@@ -17,7 +17,7 @@ public class Main {
             String dbURL = "jdbc:oracle:thin:@artemis_tpurgent?TNS_ADMIN=src/main/resources/Wallet_Artemis";
             AlmacenDeDatos almacenDeDatos = new AlmacenDeDatos(dbURL);
             printArtemisBanner();
-            System.out.println("Bienvenido a Artemis, la plataforma de gestión de identidad descentralizada.\n\n");
+            System.out.println("\n\nBienvenido a Artemis, la plataforma de gestión de identidad descentralizada.\n\n");
 
             // Animación de carga con un "spinner"
             String[] spinner = new String[] { "-", "\\", "|", "/" };

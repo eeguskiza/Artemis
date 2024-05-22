@@ -4,22 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="Updated README.md">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/api/MenuInicio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/api/MenuPrincipal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Block.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Coin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/MainPruebas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Name.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Transaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/Verification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/KeyPairGeneratorUtil.java" afterDir="false" />
+    <list default="true" id="ff0d5d23-75c6-4e34-87b0-095d6b1ab4d9" name="Changes" comment="Implementacion Blockchain basica">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/api/MenuPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/api/MenuPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/crypto/MainPruebas.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/AlmacenDeDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/AlmacenDeDatos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/sql.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/database/sql.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Artemis/core/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Artemis/core/user/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +162,7 @@
       <workItem from="1716301049305" duration="237000" />
       <workItem from="1716301339654" duration="3833000" />
       <workItem from="1716366251150" duration="1425000" />
-      <workItem from="1716372919245" duration="8604000" />
+      <workItem from="1716372919245" duration="11494000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -285,7 +276,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716301848242</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Implementacion Blockchain basica">
+      <option name="closed" value="true" />
+      <created>1716384940485</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1716384940485</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,6 +301,7 @@
     <MESSAGE value="avances" />
     <MESSAGE value="First commit" />
     <MESSAGE value="Updated README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated README.md" />
+    <MESSAGE value="Implementacion Blockchain basica" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementacion Blockchain basica" />
   </component>
 </project>
