@@ -1,7 +1,12 @@
 package org.Artemis.core.api;
 
 import org.Artemis.core.crypto.Name;
+import org.Artemis.core.crypto.Transaction;
 import org.Artemis.core.database.AlmacenDeDatos;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -90,12 +95,20 @@ public class MenuPrincipal {
 
 
     private void opcion1() {
+        almacenDeDatos.limpiarPantalla();
         System.out.println("Enviar crypto:");
+        Transaction transaccion = almacenDeDatos.enviar(new Scanner(System.in));
+        if (transaccion != null) {
+            System.out.println("Transacción realizada con éxito: " + transaccion);
+        } else {
+            System.out.println("Transacción fallida.");
+        }
         System.out.println("\nPresione Enter para continuar...");
         new Scanner(System.in).nextLine();
     }
 
     private void opcion2() {
+        almacenDeDatos.limpiarPantalla();
         System.out.println("Recibir crypto:");
         System.out.println("\nPresione Enter para mostrar su direccion de cartera...");
         new Scanner(System.in).nextLine();
@@ -105,28 +118,43 @@ public class MenuPrincipal {
     }
 
     private void opcion3() {
+        almacenDeDatos.limpiarPantalla();
         System.out.println("Historial de transacciones:");
         System.out.println("\nPresione Enter para continuar...");
         new Scanner(System.in).nextLine();
     }
 
     private void opcion4() {
+        almacenDeDatos.limpiarPantalla();
         System.out.println("Editar perfil:");
+        almacenDeDatos.editarPerfil(new Scanner(System.in));
         System.out.println("\nPresione Enter para continuar...");
         new Scanner(System.in).nextLine();
     }
 
     private void cerrarSesion() {
+        almacenDeDatos.limpiarPantalla();
         System.out.println("Cerrando sesión...");
         almacenDeDatos.cerrarSesion();
-        //un wait para que se vea el mensaje
+
+        // Guardar la blockchain en un fichero binario
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/main/resources/blockchain.dat"))) {
+            out.writeObject(almacenDeDatos.getArtemis());
+            System.out.println("Blockchain guardada en blockchain.dat");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Un wait para que se vea el mensaje
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         System.out.println("Sesión cerrada. Presione Enter para continuar...");
         new Scanner(System.in).nextLine();
         MenuInicio menuInicio = new MenuInicio(almacenDeDatos);
     }
+
 }

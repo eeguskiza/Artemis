@@ -24,8 +24,8 @@ public class User {
         count++;
     }
 
-    public User(int id, String username, String password, String email, String firstName, String lastName, String role, String publicKey, String privateKey) {
-        this.id = count;
+    public User(String username, String password, String email, String firstName, String lastName, String role, String publicKey, String privateKey) {
+        this.id = count + (int) (Math.random() * 1000);
         this.username = username;
         this.password = password;
         this.email = email;

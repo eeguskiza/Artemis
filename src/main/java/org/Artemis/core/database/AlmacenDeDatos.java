@@ -6,11 +6,12 @@ import org.Artemis.core.crypto.Name;
 import org.Artemis.core.crypto.Transaction;
 import org.Artemis.core.user.User;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Base64;
+import java.util.*;
 import java.util.Date;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +30,8 @@ public class AlmacenDeDatos {
         logger.info("Reconstruyendo base de datos ...");
         usuario = new User();
         artemis = new ArrayList<>();
-        crearBloqueGenesis();
+        cargarBlockchain();
+        //crearBloqueGenesis();
 
         try {
             conn = DriverManager.getConnection(dbURL, "ADMIN", "Oiogorta2024");
@@ -105,7 +107,7 @@ public class AlmacenDeDatos {
                 String privateKey = keyPairGenerator.getPrivateKey();
 
                 // Crear un nuevo usuario
-                User user = new User(0, username, AlmacenDeDatos.encode(password), email, firstName, lastName, role, publicKey, privateKey);
+                User user = new User(username, AlmacenDeDatos.encode(password), email, firstName, lastName, role, publicKey, privateKey);
 
                 // Registrar usuario en la base de datos
                 boolean isRegistered = almacenDeDatos.registro(user);
@@ -193,6 +195,193 @@ public class AlmacenDeDatos {
         }
     }
 
+    public String obtenerClavePublica(String username) {
+        String sql = "SELECT public_key FROM users WHERE username = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("public_key");
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error al obtener la clave pública: ", e);
+            return null;
+        }
+    }
+
+    public User obtenerUsuarioPorUsername(String username) {
+        String sql = "SELECT * FROM users WHERE username = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setUsername(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+                user.setEmail(rs.getString("email"));
+                user.setFirstName(rs.getString("first_name"));
+                user.setLastName(rs.getString("last_name"));
+                user.setRole(rs.getString("role"));
+                user.setPublicKey(rs.getString("public_key"));
+                user.setPrivateKey(rs.getString("private_key"));
+                return user;
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error al obtener el usuario: ", e);
+            return null;
+        }
+    }
+
+    public Transaction enviar(Scanner scanner) {
+        System.out.print("Ingrese el nombre de usuario al que desea enviar: ");
+        String usernameReceptor = scanner.nextLine().trim();
+
+        // Verificar si el usuario receptor existe
+        User usuarioReceptor = obtenerUsuarioPorUsername(usernameReceptor);
+        if (usuarioReceptor == null) {
+            System.out.println("El usuario receptor no existe.");
+            return null;
+        }
+
+        // Mostrar saldo del usuario actual
+        Map<Name, Double> balance = getUsuario().calculateBalance(getArtemis());
+        System.out.println("Su saldo actual es:");
+        balance.forEach((moneda, cantidad) -> System.out.println(moneda + ": " + cantidad));
+
+        System.out.print("Ingrese la moneda que desea enviar: ");
+        String monedaStr = scanner.nextLine().trim().toUpperCase();
+
+        // Verificar si la moneda es válida
+        Name moneda;
+        try {
+            moneda = Name.valueOf(monedaStr);
+        } catch (IllegalArgumentException e) {
+            System.out.println("La moneda ingresada no es válida.");
+            return null;
+        }
+
+        // Verificar si el usuario tiene suficiente saldo de esa moneda
+        if (!balance.containsKey(moneda) || balance.get(moneda) <= 0) {
+            System.out.println("No tiene suficiente saldo de la moneda seleccionada.");
+            return null;
+        }
+
+        System.out.print("Ingrese la cantidad que desea enviar: ");
+        double cantidad;
+        try {
+            cantidad = Double.parseDouble(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Cantidad no válida.");
+            return null;
+        }
+
+        if (cantidad <= 0 || cantidad > balance.get(moneda)) {
+            System.out.println("No tiene suficiente saldo para enviar esa cantidad.");
+            return null;
+        }
+
+        // Crear la transacción
+        String publicKeyEmisor = getUsuario().getPublicKey();
+        String publicKeyReceptor = usuarioReceptor.getPublicKey();
+        Transaction transaccion = new Transaction(publicKeyEmisor, publicKeyReceptor, moneda, cantidad);
+
+        // Agregar la transacción a la blockchain
+        agregarTransaccionABlockchain(transaccion);
+
+        System.out.println("Transacción creada y añadida a la blockchain.");
+
+        return transaccion;
+    }
+
+
+    public void agregarTransaccionABlockchain(Transaction transaccion) {
+        if (artemis.isEmpty() || artemis.get(artemis.size() - 1).getTransactions().length >= 10) {
+            // Crear un nuevo bloque si no hay bloques o si el último bloque está lleno
+            Block nuevoBloque = new Block(new Date());
+            nuevoBloque.setTransaction(transaccion);
+            artemis.add(nuevoBloque);
+            logger.info("Nuevo bloque creado y transacción añadida.");
+        } else {
+            // Añadir la transacción al último bloque
+            Block ultimoBloque = artemis.get(artemis.size() - 1);
+            ultimoBloque.setTransaction(transaccion);
+            logger.info("Transacción añadida al último bloque.");
+        }
+    }
+
+    public void editarPerfil(Scanner scanner) {
+        System.out.println("Editar perfil de usuario:");
+        System.out.println("Deje el campo en blanco si no desea cambiarlo.");
+
+        System.out.println("\n<----------------------------------------------->\n");
+        System.out.print("Nombre de usuario actual: " + usuario.getUsername() + "\nNuevo nombre de usuario: ");
+        String nuevoUsername = scanner.nextLine().trim();
+        if (!nuevoUsername.isEmpty()) {
+            usuario.setUsername(nuevoUsername);
+        }
+
+        System.out.println("\n<----------------------------------------------->\n");
+        System.out.print("Nombre actual: " + usuario.getFirstName() + "\nNuevo nombre: ");
+        String nuevoNombre = scanner.nextLine().trim();
+        if (!nuevoNombre.isEmpty()) {
+            usuario.setFirstName(nuevoNombre);
+        }
+
+        System.out.println("\n<----------------------------------------------->\n");
+        System.out.print("Apellido actual: " + usuario.getLastName() + "\nNuevo apellido: ");
+        String nuevoApellido = scanner.nextLine().trim();
+        if (!nuevoApellido.isEmpty()) {
+            usuario.setLastName(nuevoApellido);
+        }
+
+        System.out.println("\n<----------------------------------------------->\n");
+        System.out.print("Correo electrónico actual: " + usuario.getEmail() + "\nNuevo correo electrónico: ");
+        String nuevoEmail = scanner.nextLine().trim();
+        if (!nuevoEmail.isEmpty()) {
+            usuario.setEmail(nuevoEmail);
+        }
+
+        System.out.println("\n<----------------------------------------------->\n");
+        System.out.print("Contraseña actual: " + decode(usuario.getPassword()) + "\nNueva contraseña: ");
+        String nuevaContrasena = scanner.nextLine().trim();
+        if (!nuevaContrasena.isEmpty()) {
+            usuario.setPassword(encode(nuevaContrasena));
+        }
+
+        // Actualizar el usuario en la base de datos
+        String sql = "UPDATE users SET username = ?, first_name = ?, last_name = ?, email = ?, password = ? WHERE id = ?";
+
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, usuario.getUsername());
+            pstmt.setString(2, usuario.getFirstName());
+            pstmt.setString(3, usuario.getLastName());
+            pstmt.setString(4, usuario.getEmail());
+            pstmt.setString(5, usuario.getPassword());
+            pstmt.setInt(6, usuario.getId());
+
+            int affectedRows = pstmt.executeUpdate();
+
+            if (affectedRows > 0) {
+                logger.info("Perfil actualizado exitosamente.");
+                System.out.println("Perfil actualizado exitosamente.");
+            } else {
+                logger.warning("No se pudo actualizar el perfil.");
+                System.out.println("No se pudo actualizar el perfil.");
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error al actualizar el perfil: ", e);
+            System.out.println("Error al actualizar el perfil: " + e.getMessage());
+        }
+    }
+
     //metodo cerrar sesion
     public void cerrarSesion() {
         usuario = null;
@@ -229,4 +418,15 @@ public class AlmacenDeDatos {
         artemis.add(genesisBlock);
         logger.info("Bloque génesis creado con 10 transacciones a ERIK.");
     }
+
+    // Método para cargar la blockchain
+    public void cargarBlockchain() {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/main/resources/blockchain.dat"))) {
+            artemis = (ArrayList<Block>) in.readObject();
+            logger.info("Blockchain cargada desde blockchain.dat");
+        } catch (IOException | ClassNotFoundException e) {
+            logger.log(Level.SEVERE, "Error al cargar la blockchain: ", e);
+        }
+    }
+
 }

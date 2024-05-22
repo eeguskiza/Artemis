@@ -1,9 +1,10 @@
 package org.Artemis.core.crypto;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
 
-public class Block {
+public class Block implements Serializable {
     private static int count = 0;
     private int id;
     private Transaction[] transactions;
