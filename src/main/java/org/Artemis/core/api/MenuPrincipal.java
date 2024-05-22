@@ -1,16 +1,24 @@
 package org.Artemis.core.api;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
 import org.Artemis.core.crypto.Name;
 import org.Artemis.core.crypto.Transaction;
 import org.Artemis.core.database.AlmacenDeDatos;
+import org.Artemis.core.database.QRCodeGenerator;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.Map;
 import java.util.Scanner;
 
-public class MenuPrincipal {
+public class MenuPrincipal implements QRCodeGenerator {
 
     private AlmacenDeDatos almacenDeDatos;
 
@@ -112,7 +120,18 @@ public class MenuPrincipal {
         System.out.println("Recibir crypto:");
         System.out.println("\nPresione Enter para mostrar su direccion de cartera...");
         new Scanner(System.in).nextLine();
-        System.out.println("Su dirección de cartera es: " + almacenDeDatos.getUsuario().getPublicKey());
+        String publicKey = almacenDeDatos.getUsuario().getPublicKey();
+        System.out.println("Su dirección de cartera es: " + publicKey);
+
+        // Generar y guardar el QR Code
+        try {
+            String filePath = "src/main/resources/qrcode.png";
+            generateQRCodeImage(publicKey, 200, 200, filePath);
+            System.out.println("\nCódigo QR de su dirección de cartera guardado en: " + filePath);
+        } catch (WriterException | IOException e) {
+            System.out.println("Error al generar el código QR: " + e.getMessage());
+        }
+
         System.out.println("\nPresione Enter para continuar...");
         new Scanner(System.in).nextLine();
     }
@@ -157,4 +176,12 @@ public class MenuPrincipal {
         MenuInicio menuInicio = new MenuInicio(almacenDeDatos);
     }
 
+    @Override
+    public void generateQRCodeImage(String text, int width, int height, String filePath) throws WriterException, IOException {
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height);
+
+        Path path = FileSystems.getDefault().getPath(filePath);
+        MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
+    }
 }
